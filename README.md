@@ -1,1 +1,1 @@
-# CoreDataDemo
+# CoreDataDemo这里的两个demo demo2 可做参考，demo3用到的是项目中的一个URL地址，因为sessionId每次登陆都会变化，所以demo3在你的电脑上无法获取数据，可以参考一下写法。
