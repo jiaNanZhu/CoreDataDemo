@@ -63,7 +63,7 @@
 -(void)coreDataAdd{
     Person *person = [NSEntityDescription insertNewObjectForEntityForName:@"Person" inManagedObjectContext:app.persistentContainer.viewContext];
     person.name = [NSString stringWithFormat:@"花花%d",arc4random()%10];
-    person.age = [[NSNumber numberWithInteger:15] integerValue];
+    person.age = [[NSNumber numberWithInteger:arc4random()%20] integerValue];
     [app.persistentContainer.viewContext save:nil];
     
 }
@@ -71,7 +71,7 @@
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Person" inManagedObjectContext:app.persistentContainer.viewContext];
     NSFetchRequest *request = [[NSFetchRequest alloc]init];
     [request setEntity:entity];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name=%@",@"花花8"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name=%@",@"朱佳男"];
     [request setPredicate:predicate];
     
     NSArray *array = [app.persistentContainer.viewContext executeFetchRequest:request error:nil];
@@ -99,7 +99,6 @@
             person.name = @"朱佳男";
         }
         [app.persistentContainer.viewContext save:nil];
-        NSLog(@"朱佳男");
     }else
     {
         NSLog(@"无检索数据");
@@ -110,10 +109,13 @@
     NSFetchRequest *request = [[NSFetchRequest alloc]init];
     [request setEntity:entity];
     NSArray *array = [app.persistentContainer.viewContext executeFetchRequest:request error:nil];
-    for (Person *person in array) {
-        NSLog(@"%@",person.name);
+    if (array.count) {
+        for (Person *person in array) {
+            NSLog(@"姓名%@--年龄%d",person.name,person.age);
+        }
+    }else{
+        NSLog(@"没有检索到数据");
     }
-    
 }
 
 - (void)didReceiveMemoryWarning {
