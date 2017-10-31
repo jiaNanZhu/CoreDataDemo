@@ -68,7 +68,7 @@
     person.name = [NSString stringWithFormat:@"商宇%d号员工",arc4random()%10];
     person.age = arc4random()%20;
     person.sex = 0;
-    person.phone = [NSString stringWithFormat:@"18135697075"];
+    person.phone = [NSString stringWithFormat:@"18135697071"];
     
     NSEntityDescription *cardEntity = [NSEntityDescription entityForName:@"Card" inManagedObjectContext:context];
     Card *card1 = [[Card alloc]initWithEntity:cardEntity insertIntoManagedObjectContext:context];
